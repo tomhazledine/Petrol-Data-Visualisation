@@ -1,6 +1,7 @@
 import React from 'react';
 import Sticky from 'react-sticky-fill';
 
+import FrequencyGraph from './FrequencyGraph';
 import { topupsPerMonth, spendPerMonth } from '../tools/dataWranglers';
 
 class Year extends React.Component {
@@ -16,18 +17,21 @@ class Year extends React.Component {
                 </p>*/}
                 <div className="year__meta">
                     <Sticky>
-                        <h1 className="year__title">{this.props.data.year}</h1>
-                        <p>
-                            <span className="year__meta-value">{monthlyCount}</span> topups per
-                            month
-                        </p>
-                        <p>
-                            <span className="year__meta-value">{monthlySpend}</span> mean topup cost
-                        </p>
+                        <div className="year__meta-inner">
+                            <h1 className="year__title">{this.props.data.year}</h1>
+                            <p>
+                                <span className="year__meta-value">{monthlyCount}</span> topups per
+                                month
+                            </p>
+                            <p>
+                                <span className="year__meta-value">{monthlySpend}</span> mean topup
+                                cost
+                            </p>
+                        </div>
                     </Sticky>
                 </div>
                 <div className="year__graphs">
-                    <p>Graphs</p>
+                    <FrequencyGraph data={this.props.data} />
                 </div>
             </div>
         );

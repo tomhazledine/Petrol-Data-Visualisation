@@ -11,6 +11,7 @@ class Main extends React.Component {
         // console.log(petrolData);
 
         const yearsData = splitDataIntoYears(petrolData, years);
+        yearsData.sort((a, b) => a.year < b.year);
 
         const yearsOutput = yearsData.map((year, key) => <Year key={key} data={year} />);
 
