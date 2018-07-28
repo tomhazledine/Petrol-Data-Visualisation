@@ -8,7 +8,7 @@ class FrequencyGraph extends React.Component {
         // Sizes and layout
         this.size = {
             width: 400,
-            height: 100
+            height: 60
         };
         this.layout = {
             margin: { top: 0, right: 20, bottom: 30, left: 20 }
@@ -30,7 +30,6 @@ class FrequencyGraph extends React.Component {
         this.range = [];
 
         this.state = {
-            a: false,
             data: [],
             year: 0,
             dateRange: []
@@ -74,11 +73,11 @@ class FrequencyGraph extends React.Component {
         });
 
         return (
-            <div className="table__wrapper">
-                <div className="table__title-wrapper">
-                    <h2 className="table__title">Frequency</h2>
+            <div className="graph__wrapper">
+                <div className="graph__title-wrapper">
+                    <h2 className="graph__title">Frequency</h2>
                 </div>
-                <svg width={this.size.width} height={this.size.height}>
+                <svg width={this.size.width} height={this.size.height} className="frequency__graph">
                     <g
                         transform={`translate(${this.layout.margin.left},${
                             this.layout.margin.top

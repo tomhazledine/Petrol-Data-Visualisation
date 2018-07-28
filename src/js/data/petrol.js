@@ -140,7 +140,7 @@ const petrolData = [
     { date: 1524178800, petrol: 5258, ppl: 1199 },
     { date: 1522969200, petrol: 3015, ppl: 1188 },
     { date: 1523314800, petrol: 6000, ppl: 1229 },
-    { date: 1521417600, petrol: 4394, ppl: 3727 },
+    { date: 1521417600, petrol: 4394, ppl: 1372 },
     { date: 1522278000, petrol: 1197, ppl: 1167 },
     { date: 1522364400, petrol: 6388, ppl: 1179 },
     { date: 1519603200, petrol: 4449, ppl: 1249 },

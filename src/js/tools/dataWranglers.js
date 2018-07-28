@@ -23,3 +23,14 @@ export const topupsPerMonth = data => {
 export const totalSpend = data => data.reduce((acc, curr) => acc + curr.petrol, 0);
 
 export const spendPerMonth = data => parseCurrency(totalSpend(data) / data.length);
+
+export const sortByAlternateKey = (results, sortKey, reverse = false) =>
+    results.sort((a, b) => {
+        if (a[sortKey] < b[sortKey]) {
+            return reverse ? -1 : 1;
+        }
+        if (a[sortKey] > b[sortKey]) {
+            return reverse ? 1 : -1;
+        }
+        return 0;
+    });
