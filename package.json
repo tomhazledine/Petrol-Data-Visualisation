@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
+  "name": "petrol-data-visualisation",
   "version": "1.0.0",
-  "description": "Sandbox for messing about with React",
+  "description": "Using React and D3.js to visualise my petrol spending habits since 2015",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

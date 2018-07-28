@@ -1,3 +1,3 @@
-# React Boilerplate
+# Petrol Data Visualisation
 
-A playground and/or jumping-off-point for experiments using React.js
+Using React and D3.js to visualise my petrol spending habits since 2015
