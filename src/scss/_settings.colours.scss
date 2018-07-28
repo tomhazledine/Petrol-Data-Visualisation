@@ -20,6 +20,19 @@ $grey: #aaa;
 $black: #111;
 
 // Project Colours
+$black: #4d4d4d;
+$blackSoft: #666;
+$white: #fdfdfa;
+$cream: #efeeeb;
+$grey: #dad8d2;
+$greyDark: darken($grey, 20%);
+$primary: #00b7c6;
+
+$orange: #793200;
+$orange_dark: #c65100;
+$primary_dark: #007079;
+// $primary_light:#b2e9ea;
+$primary_light: #e4f6f5; //rgba($primary,.1);//#19EEFF;
 
 // Selection Colours
 ::selection {

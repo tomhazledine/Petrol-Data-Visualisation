@@ -1,0 +1,19 @@
+.year__wrapper {
+    padding: 2em;
+    display: flex;
+    // height: 100%;
+    // height: 100vh;
+}
+.year__meta {
+    width: 30%;
+    padding-right: 2em;
+}
+.year__title {
+}
+.year__meta-value {
+}
+.year__graphs {
+    width: 70%;
+    height: 24em;
+    background: rgba($red, 0.3);
+}
