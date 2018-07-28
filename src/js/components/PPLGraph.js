@@ -1,6 +1,6 @@
 import React from 'react';
 import * as d3 from 'd3';
-import { parseCurrency } from '../tools/dataHelpers';
+import { parseCurrency, mode, median, mean } from '../tools/dataHelpers';
 import { sortByAlternateKey } from '../tools/dataWranglers';
 
 class PPLGraph extends React.Component {
@@ -96,6 +96,39 @@ class PPLGraph extends React.Component {
             }
         });
 
+        const valuesArray = this.state.data
+            .filter(entry => typeof entry.ppl !== 'undefined')
+            .map(entry => entry.ppl);
+
+        const averages = [
+            // { key: 'mean', value: mean(valuesArray) },
+            // { key: 'mode', value: mode(valuesArray) },
+            { key: 'median', value: median(valuesArray) }
+        ];
+        console.log(averages);
+
+        const averageLines = averages.map((item, key) => {
+            return (
+                <g key={key}>
+                    <text
+                        x="0"
+                        y={this.yScale(item.value)}
+                        // textLength={this.layout.width}
+                        className={`average-line__text average-line__text--${item.key}`}
+                    >
+                        {item.key}
+                    </text>
+                    <rect
+                        className={`average-line average-line--${item.key}`}
+                        height="1"
+                        width={this.layout.width}
+                        y={this.yScale(item.value)}
+                        x="0"
+                    />
+                </g>
+            );
+        });
+
         return (
             <div className="graph__wrapper">
                 <div className="graph__title-wrapper">
@@ -107,7 +140,19 @@ class PPLGraph extends React.Component {
                             this.layout.margin.top
                         })`}
                     >
-                        {/*<g className="ppl__bars">{line}</g>*/}
+                        <g className="markers">
+                            <rect
+                                className="marker"
+                                height="1"
+                                width={this.layout.width}
+                                y={this.yScale(1000)}
+                                x="0"
+                            />
+                        </g>
+                        <g className="ppl__lines">
+                            {averageLines}
+                            {/*line*/}
+                        </g>
                         <g className="ppl__dots">{dots}</g>
                         <g>
                             <g

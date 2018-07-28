@@ -1,0 +1,34 @@
+.circle {
+    fill: $primary;
+}
+
+.marker {
+    fill: rgba($black, 0.3);
+}
+
+.average-line--median {
+    fill: $red;
+}
+.average-line--mean {
+    fill: rgba($red, 0.2);
+}
+.average-line--mode {
+    fill: rgba($red, 0.5);
+}
+
+.average-line__text {
+    text-transform: uppercase;
+    letter-spacing: 0.1;
+    font-size: 1rem;
+}
+.average-line__text--median {
+    fill: $red;
+}
+.average-line__text--mean {
+    fill: rgba($red, 0.2);
+    transform: translateX(10em);
+}
+.average-line__text--mode {
+    fill: rgba($red, 0.5);
+    transform: translateX(5em);
+}
