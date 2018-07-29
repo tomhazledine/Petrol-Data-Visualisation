@@ -13,7 +13,7 @@ class PPLGraph extends React.Component {
             height: 200
         };
         this.layout = {
-            margin: { top: 10, right: 80, bottom: 30, left: 20 }
+            margin: { top: 4, right: 80, bottom: 30, left: 6 }
         };
         this.layout.width = this.size.width - this.layout.margin.left - this.layout.margin.right;
         this.layout.height = this.size.height - this.layout.margin.top - this.layout.margin.bottom;
@@ -26,10 +26,12 @@ class PPLGraph extends React.Component {
         this.xAxis = d3
             .axisBottom()
             .scale(this.xScale)
+            .ticks(3)
             .tickFormat(d3.timeFormat('%b'));
         this.yAxis = d3
             .axisRight()
             .scale(this.yScale)
+            .ticks(4)
             .tickFormat(d => parseCurrency(d, 3, 2));
 
         // Line generator
@@ -167,12 +169,12 @@ class PPLGraph extends React.Component {
                         <g>
                             <g
                                 ref="xAxis"
-                                className="ppl__axis--x"
+                                className="axis axis--x ppl__axis--x"
                                 transform={`translate(0,${this.layout.height})`}
                             />
                             <g
                                 ref="yAxis"
-                                className="ppl__axis--y"
+                                className="axis axis--y ppl__axis--y"
                                 transform={`translate(${this.layout.width},0)`}
                             />
                         </g>

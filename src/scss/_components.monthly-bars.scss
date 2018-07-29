@@ -1,7 +1,27 @@
 .monthly__bar {
     fill: rgba($primary, 0.5);
     transition: fill 0.2s;
-    &:hover {
-        fill: rgba($primary, 1);
-    }
+}
+
+.monthly__bar-label {
+    font-size: 1.6rem;
+    font-family: $utility;
+    fill: $cream;
+    // font-weight: 700;
+    // stroke: $cream;
+    // stroke-width: 1rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(1.6rem);
+    // paint-order: stroke;
+    // stroke-linecap: butt;
+    // stroke-linejoin: miter;
+}
+
+.monthly__bar-wrapper:hover .monthly__bar-label {
+    opacity: 1;
+}
+
+.monthly__bar-wrapper:hover .monthly__bar {
+    fill: rgba($primary, 1);
 }

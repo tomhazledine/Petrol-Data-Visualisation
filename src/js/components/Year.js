@@ -4,12 +4,14 @@ import Sticky from 'react-sticky-fill';
 import FrequencyGraph from './FrequencyGraph';
 import MonthlyBars from './MonthlyBars';
 import PPLGraph from './PPLGraph';
-import { topupsPerMonth, spendPerMonth } from '../tools/dataWranglers';
+import { totalSpend, topupsPerMonth, spendPerMonth } from '../tools/dataWranglers';
+import { parseCurrency } from '../tools/dataHelpers';
 
 class Year extends React.Component {
     render() {
         const monthlyCount = topupsPerMonth(this.props.data.data);
         const monthlySpend = spendPerMonth(this.props.data.data);
+        const total = totalSpend(this.props.data.data);
         return (
             <div className="year__wrapper">
                 {/*<p>
@@ -29,6 +31,10 @@ class Year extends React.Component {
                                 <span className="year__meta-value">{monthlySpend}</span> mean topup
                                 cost
                             </p>
+                            <p>
+                                <span className="year__meta-value">{parseCurrency(total)}</span>{' '}
+                                spent this year
+                            </p>
                         </div>
                     </Sticky>
                 </div>
@@ -37,6 +43,7 @@ class Year extends React.Component {
                     <MonthlyBars data={this.props.data} />
                     <PPLGraph data={this.props.data} />
                 </div>
+                <div className="year__divider"></div>
             </div>
         );
     }

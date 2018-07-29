@@ -11,7 +11,7 @@ class FrequencyGraph extends React.Component {
             height: 85
         };
         this.layout = {
-            margin: { top: 25, right: 80, bottom: 30, left: 20 }
+            margin: { top: 0, right: 80, bottom: 30, left: 6 }
         };
         this.layout.width = this.size.width - this.layout.margin.left - this.layout.margin.right;
         this.layout.height = this.size.height - this.layout.margin.top - this.layout.margin.bottom;
@@ -24,6 +24,7 @@ class FrequencyGraph extends React.Component {
         this.xAxis = d3
             .axisBottom()
             .scale(this.xScale)
+            .ticks(3)
             .tickFormat(d3.timeFormat('%b'));
 
         // Date Range
@@ -92,7 +93,7 @@ class FrequencyGraph extends React.Component {
                         <g>
                             <g
                                 ref="xAxis"
-                                className="frequecy__axis--x"
+                                className="axis axis--x frequecy__axis frequecy__axis--x"
                                 transform={`translate(0,${this.layout.height})`}
                             />
                         </g>

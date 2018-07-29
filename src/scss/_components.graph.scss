@@ -1,6 +1,39 @@
+.graph__wrapper {
+    margin-bottom: 2em;
+}
+
+.graph__title-wrapper {
+    padding-left: 0.6rem;
+    margin-bottom: 0.5em;
+}
+
+.graph__title {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
 .graph__marker {
     fill: rgba($black, 0.15);
 }
 .graph__background {
-    fill: rgba($black, 0.05);
+    // fill: rgba($black, 0.05);
+    fill: $cream;
+}
+
+.axis {
+    .domain {
+        stroke: none;
+    }
+    .tick line {
+        stroke: $grey--dark;
+    }
+}
+
+.axis--x {
+    .tick line {
+        // stroke: none;
+    }
 }
