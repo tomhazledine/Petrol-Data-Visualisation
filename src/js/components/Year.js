@@ -2,6 +2,7 @@ import React from 'react';
 import Sticky from 'react-sticky-fill';
 
 import FrequencyGraph from './FrequencyGraph';
+import MonthlyBars from './MonthlyBars';
 import PPLGraph from './PPLGraph';
 import { topupsPerMonth, spendPerMonth } from '../tools/dataWranglers';
 
@@ -33,6 +34,7 @@ class Year extends React.Component {
                 </div>
                 <div className="year__graphs">
                     <FrequencyGraph data={this.props.data} />
+                    <MonthlyBars data={this.props.data} />
                     <PPLGraph data={this.props.data} />
                 </div>
             </div>

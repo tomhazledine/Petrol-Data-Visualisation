@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import { parseCurrency, mode, median, mean } from '../tools/dataHelpers';
 import { sortByAlternateKey } from '../tools/dataWranglers';
 
-class PPLGraph extends React.Component {
+class MonthlyBars extends React.Component {
     constructor() {
         super();
 
@@ -30,7 +30,7 @@ class PPLGraph extends React.Component {
         this.yAxis = d3
             .axisRight()
             .scale(this.yScale)
-            .tickFormat(d => parseCurrency(d, 3, 2));
+            .tickFormat(d => parseCurrency(d, 2, 0));
 
         // Line generator
         this.lineGenerator = d3.line();
@@ -64,68 +64,41 @@ class PPLGraph extends React.Component {
     }
 
     render() {
+        const months = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
+        const monthlyData = months.map(month =>
+            this.state.data.filter(item => item.date.getMonth() === month)
+        );
+
+        const monthlyResults = monthlyData.map((month, key) => {
+            let totalSpend = month.reduce((acc, entry) => acc + entry.petrol, 0);
+            return {
+                month: key,
+                count: month.length,
+                total: totalSpend,
+                medianSpend: Math.round(totalSpend / month.length)
+            };
+        });
+
+        console.log(monthlyResults);
+
         // Scale the range of the data
         this.xScale.domain(d3.extent(this.state.dateRange));
         // this.yScale.domain([0, d3.max(this.state.data, d => d.ppl)]);
-        this.yScale.domain([900, 1400]);
-        // this.yScale.domain([0, 1400]);
+        this.yScale.domain([0, 7000]);
 
-        // Define the line generator
-        this.lineGenerator
-            .defined(d => typeof d.ppl === 'number')
-            .x(d => this.xScale(d.date))
-            .y(d => this.yScale(d.ppl));
-        // .curve(d3.curveCatmullRom.alpha(0.5));
-
-        // console.log(this.layout);
-
-        let lineData = this.lineGenerator(this.state.data);
-        let line = <path d={lineData} className="line" fill="none" stroke="#000000" />;
-
-        let dots = this.state.data.map((entry, key) => {
-            if (typeof entry.ppl !== 'undefined') {
-                return (
-                    <circle
-                        key={key}
-                        r="2"
-                        transform={`translate(${this.xScale(entry.date)},${this.yScale(
-                            entry.ppl
-                        )})`}
-                        className="circle"
-                    />
-                );
-            }
-        });
-
-        const valuesArray = this.state.data
-            .filter(entry => typeof entry.ppl !== 'undefined')
-            .map(entry => entry.ppl);
-
-        const averages = [
-            // { key: 'mean', value: mean(valuesArray) },
-            // { key: 'mode', value: mode(valuesArray) },
-            { key: 'median', value: median(valuesArray) }
-        ];
-
-        const averageLines = averages.map((item, key) => {
+        const bars = monthlyResults.map((month, key) => {
+            let barHeight = this.yScale(month.medianSpend);
+            console.log('barHeight', barHeight);
             return (
-                <g key={key}>
-                    <text
-                        x="0"
-                        y={this.yScale(item.value)}
-                        // textLength={this.layout.width}
-                        className={`average-line__text average-line__text--${item.key}`}
-                    >
-                        {item.key}
-                    </text>
-                    <rect
-                        className={`average-line average-line--${item.key}`}
-                        height="1"
-                        width={this.layout.width}
-                        y={this.yScale(item.value)}
-                        x="0"
-                    />
-                </g>
+                <rect
+                    key={key}
+                    className="ppl__bar"
+                    height={this.layout.height - barHeight}
+                    width={this.layout.width / 12}
+                    x={this.xScale(new Date(this.state.year, month.month))}
+                    y={barHeight}
+                />
             );
         });
 
@@ -140,7 +113,7 @@ class PPLGraph extends React.Component {
                             this.layout.margin.top
                         })`}
                     >
-                        <g className="markers">
+                        {/*<g className="markers">
                             <rect
                                 className="marker"
                                 height="1"
@@ -148,12 +121,8 @@ class PPLGraph extends React.Component {
                                 y={this.yScale(1000)}
                                 x="0"
                             />
-                        </g>
-                        <g className="ppl__lines">
-                            {averageLines}
-                            {/*line*/}
-                        </g>
-                        <g className="ppl__dots">{dots}</g>
+                        </g>*/}
+                        <g className="ppl__bars">{bars}</g>
                         <g>
                             <g
                                 ref="xAxis"
@@ -173,4 +142,4 @@ class PPLGraph extends React.Component {
     }
 }
 
-export default PPLGraph;
+export default MonthlyBars;
