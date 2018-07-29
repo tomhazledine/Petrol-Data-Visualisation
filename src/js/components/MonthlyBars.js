@@ -9,7 +9,7 @@ class MonthlyBars extends React.Component {
 
         // Sizes and layout
         this.size = {
-            width: 460,
+            width: 600,
             height: 150
         };
         this.layout = {
@@ -90,22 +90,37 @@ class MonthlyBars extends React.Component {
         const bars = monthlyResults.map((month, key) => {
             let barHeight = this.yScale(month.medianSpend);
             console.log('barHeight', barHeight);
+            let x1 = this.xScale(new Date(this.state.year, month.month));
+            let x2 = this.xScale(new Date(this.state.year, month.month + 1));
             return (
                 <rect
                     key={key}
-                    className="ppl__bar"
+                    className="monthly__bar"
                     height={this.layout.height - barHeight}
-                    width={this.layout.width / 12}
-                    x={this.xScale(new Date(this.state.year, month.month))}
+                    width={x2 - x1}
+                    x={x1}
                     y={barHeight}
                 />
             );
         });
 
+        const markers = [2000, 4000, 6000];
+
+        const makersLines = markers.map((marker, key) => (
+            <rect
+                key={key}
+                className="graph__marker"
+                height="1"
+                width={this.layout.width}
+                y={this.yScale(marker)}
+                x="0"
+            />
+        ));
+
         return (
             <div className="graph__wrapper">
                 <div className="graph__title-wrapper">
-                    <h2 className="graph__title">Price Per Litre</h2>
+                    <h2 className="graph__title">Average weekly spend</h2>
                 </div>
                 <svg width={this.size.width} height={this.size.height}>
                     <g
@@ -113,25 +128,22 @@ class MonthlyBars extends React.Component {
                             this.layout.margin.top
                         })`}
                     >
-                        {/*<g className="markers">
-                            <rect
-                                className="marker"
-                                height="1"
-                                width={this.layout.width}
-                                y={this.yScale(1000)}
-                                x="0"
-                            />
-                        </g>*/}
-                        <g className="ppl__bars">{bars}</g>
+                        <rect
+                            className="graph__background"
+                            height={this.layout.height}
+                            width={this.layout.width}
+                        />
+                        <g className="graph__markers">{makersLines}</g>
+                        <g className="monthly__bars">{bars}</g>
                         <g>
                             <g
                                 ref="xAxis"
-                                className="ppl__axis--x"
+                                className="monthly__axis--x"
                                 transform={`translate(0,${this.layout.height})`}
                             />
                             <g
                                 ref="yAxis"
-                                className="ppl__axis--y"
+                                className="monthly__axis--y"
                                 transform={`translate(${this.layout.width},0)`}
                             />
                         </g>

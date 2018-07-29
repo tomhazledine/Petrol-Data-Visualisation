@@ -7,11 +7,11 @@ class FrequencyGraph extends React.Component {
 
         // Sizes and layout
         this.size = {
-            width: 400,
-            height: 60
+            width: 600,
+            height: 85
         };
         this.layout = {
-            margin: { top: 0, right: 20, bottom: 30, left: 20 }
+            margin: { top: 25, right: 80, bottom: 30, left: 20 }
         };
         this.layout.width = this.size.width - this.layout.margin.left - this.layout.margin.right;
         this.layout.height = this.size.height - this.layout.margin.top - this.layout.margin.bottom;
@@ -66,7 +66,7 @@ class FrequencyGraph extends React.Component {
                     className="frequency__bar"
                     width="1"
                     height={this.yScale(100)}
-                    y={this.layout.margin.top}
+                    y={0}
                     x={this.xScale(entry.date)}
                 />
             );
@@ -83,13 +83,17 @@ class FrequencyGraph extends React.Component {
                             this.layout.margin.top
                         })`}
                     >
+                        <rect
+                            className="graph__background"
+                            height={this.layout.height}
+                            width={this.layout.width}
+                        />
                         <g className="frequency__bars">{bars}</g>
                         <g>
                             <g
                                 ref="xAxis"
                                 className="frequecy__axis--x"
-                                transform={`translate(0,${this.layout.margin.top +
-                                    this.layout.height})`}
+                                transform={`translate(0,${this.layout.height})`}
                             />
                         </g>
                     </g>

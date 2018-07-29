@@ -1,3 +1,9 @@
 .frequency__bar {
     fill: rgba($primary, 0.6);
+    &:hover {
+        fill: rgba($primary, 1);
+        stroke: rgba($primary, 1);
+        stroke-width: 0.1rem;
+        // transform: translateY(-0.5rem);
+    }
 }

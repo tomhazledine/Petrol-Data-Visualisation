@@ -9,8 +9,8 @@ class PPLGraph extends React.Component {
 
         // Sizes and layout
         this.size = {
-            width: 460,
-            height: 150
+            width: 600,
+            height: 200
         };
         this.layout = {
             margin: { top: 10, right: 80, bottom: 30, left: 20 }
@@ -67,7 +67,7 @@ class PPLGraph extends React.Component {
         // Scale the range of the data
         this.xScale.domain(d3.extent(this.state.dateRange));
         // this.yScale.domain([0, d3.max(this.state.data, d => d.ppl)]);
-        this.yScale.domain([900, 1400]);
+        this.yScale.domain([850, 1400]);
         // this.yScale.domain([0, 1400]);
 
         // Define the line generator
@@ -129,6 +129,19 @@ class PPLGraph extends React.Component {
             );
         });
 
+        const markers = [900, 1000, 1100, 1200, 1300];
+
+        const makersLines = markers.map((marker, key) => (
+            <rect
+                key={key}
+                className="graph__marker"
+                height="1"
+                width={this.layout.width}
+                y={this.yScale(marker)}
+                x="0"
+            />
+        ));
+
         return (
             <div className="graph__wrapper">
                 <div className="graph__title-wrapper">
@@ -140,15 +153,12 @@ class PPLGraph extends React.Component {
                             this.layout.margin.top
                         })`}
                     >
-                        <g className="markers">
-                            <rect
-                                className="marker"
-                                height="1"
-                                width={this.layout.width}
-                                y={this.yScale(1000)}
-                                x="0"
-                            />
-                        </g>
+                        <rect
+                            className="graph__background"
+                            height={this.layout.height}
+                            width={this.layout.width}
+                        />
+                        <g className="graph__markers">{makersLines}</g>
                         <g className="ppl__lines">
                             {averageLines}
                             {/*line*/}
