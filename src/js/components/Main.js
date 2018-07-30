@@ -3,6 +3,7 @@ import { splitDataIntoYears } from '../tools/dataWranglers';
 
 import petrolData from '../data/petrol';
 import Header from './Header';
+import Footer from './Footer';
 import Year from './Year';
 
 class Main extends React.Component {
@@ -22,6 +23,7 @@ class Main extends React.Component {
             <main>
                 <Header data={petrolData} />
                 {yearsOutput}
+                <Footer />
             </main>
         );
     }

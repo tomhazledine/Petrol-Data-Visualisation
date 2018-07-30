@@ -4,6 +4,7 @@ import Sticky from 'react-sticky-fill';
 import FrequencyGraph from './FrequencyGraph';
 import MonthlyBars from './MonthlyBars';
 import PPLGraph from './PPLGraph';
+import pump from '../../icons/pump.svg';
 import { totalSpend, topupsPerMonth, spendPerMonth } from '../tools/dataWranglers';
 import { parseCurrency } from '../tools/dataHelpers';
 
@@ -14,7 +15,11 @@ class Year extends React.Component {
         const total = totalSpend(this.props.data.data);
         return (
             <div className="year__wrapper">
-                <div className="year__divider" />
+                <div className="year__divider">
+                    <svg className="year__divider-icon">
+                        <use xlinkHref={`#${pump.id}`} />
+                    </svg>
+                </div>
                 <div className="year__meta">
                     <Sticky>
                         <div className="year__meta-inner">

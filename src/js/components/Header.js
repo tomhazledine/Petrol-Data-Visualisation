@@ -29,10 +29,10 @@ class Header extends React.Component {
             <div className="header">
                 <div className="header__home">
                     <a href="https://tomhazledine.com">
+                        <span className="home__prompt">Back to tomhazledine.com</span>
                         <svg className="home__icon">
                             <use xlinkHref={`#${home.id}`} />
                         </svg>
-                        <span className="visuallyhidden">Home</span>
                     </a>
                 </div>
                 <div className="header__content">
