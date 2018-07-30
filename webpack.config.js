@@ -66,12 +66,12 @@ module.exports = {
                 test: /\.svg$/,
                 use: [
                     {
-                        loader: 'svg-sprite-loader',
-                        options: {
-                            extract: true,
-                            spriteFilename: 'icons/iconsprite.svg.php',
-                            path: path.resolve(__dirname, 'assets')
-                        }
+                        loader: 'svg-sprite-loader'
+                        // options: {
+                        //     extract: true,
+                        //     spriteFilename: 'icons/iconsprite.svg.php',
+                        //     path: path.resolve(__dirname, 'assets')
+                        // }
                     },
                     'svgo-loader'
                 ]
@@ -97,7 +97,7 @@ module.exports = {
             path: path.resolve(__dirname, 'build/css'),
             filename: 'app.css',
             chunkFilename: '[id].css'
-        }),
-        new SpriteLoaderPlugin()
+        })
+        // new SpriteLoaderPlugin()
     ]
 };

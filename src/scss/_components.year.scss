@@ -14,7 +14,7 @@
     font-size: 15vw;
     color: rgba($primary, 0.3);
     font-weight: 700;
-    line-height: 1;
+    line-height: 0.85;
     // font-family: $utility;
 }
 .year__meta-value {
@@ -31,6 +31,7 @@
 .year__divider {
     width: 100%;
     height: 2em;
+    margin-bottom: 2em;
     // background: rgba($red, 0.2);
     position: relative;
     &:before {

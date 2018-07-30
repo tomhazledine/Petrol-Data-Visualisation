@@ -136,7 +136,7 @@ class PPLGraph extends React.Component {
         const makersLines = markers.map((marker, key) => (
             <rect
                 key={key}
-                className="graph__marker"
+                className={`graph__marker ${marker === 1000 ? 'graph__marker--strong' : ''}`}
                 height="1"
                 width={this.layout.width}
                 y={this.yScale(marker)}
@@ -147,7 +147,7 @@ class PPLGraph extends React.Component {
         return (
             <div className="graph__wrapper">
                 <div className="graph__title-wrapper">
-                    <h2 className="graph__title">Price Per Litre</h2>
+                    <h3 className="graph__title">Price Per Litre</h3>
                 </div>
                 <svg width={this.size.width} height={this.size.height}>
                     <g

@@ -2,6 +2,7 @@ import React from 'react';
 import { splitDataIntoYears } from '../tools/dataWranglers';
 
 import petrolData from '../data/petrol';
+import Header from './Header';
 import Year from './Year';
 
 class Main extends React.Component {
@@ -17,7 +18,12 @@ class Main extends React.Component {
 
         // console.log(yearsData);
 
-        return <main>{yearsOutput}</main>;
+        return (
+            <main>
+                <Header data={petrolData} />
+                {yearsOutput}
+            </main>
+        );
     }
 }
 

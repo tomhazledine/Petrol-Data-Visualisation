@@ -135,7 +135,7 @@ class MonthlyBars extends React.Component {
         return (
             <div className="graph__wrapper">
                 <div className="graph__title-wrapper">
-                    <h2 className="graph__title">Monthly spend (£)</h2>
+                    <h3 className="graph__title">Monthly spend (£)</h3>
                 </div>
                 <svg width={this.size.width} height={this.size.height}>
                     <g

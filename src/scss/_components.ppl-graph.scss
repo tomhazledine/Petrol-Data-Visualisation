@@ -3,7 +3,8 @@
 }
 
 .average-line--median {
-    fill: $red;
+    // fill: $red;
+    fill: $orange--light;
 }
 .average-line--mean {
     fill: rgba($red, 0.2);
@@ -14,14 +15,16 @@
 
 .average-line__text {
     text-transform: uppercase;
-    letter-spacing: 0.1;
+    letter-spacing: 0.1em;
     font-size: 1rem;
+    font-weight: 700;
 }
 .average-line__text--median {
-    fill: $red;
+    fill: rgba($orange--light, 0.8);
 }
 .average-line__text--mean {
     fill: rgba($red, 0.2);
+    fill: $orange--light;
     transform: translateX(10em);
 }
 .average-line__text--mode {

@@ -76,7 +76,7 @@ class FrequencyGraph extends React.Component {
         return (
             <div className="graph__wrapper">
                 <div className="graph__title-wrapper">
-                    <h2 className="graph__title">Frequency</h2>
+                    <h3 className="graph__title">Frequency</h3>
                 </div>
                 <svg width={this.size.width} height={this.size.height} className="frequency__graph">
                     <g

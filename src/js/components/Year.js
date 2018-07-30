@@ -14,15 +14,11 @@ class Year extends React.Component {
         const total = totalSpend(this.props.data.data);
         return (
             <div className="year__wrapper">
-                {/*<p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias error ad,
-                    dolore quia amet quas tenetur veniam nobis cum quasi laboriosam velit saepe nam,
-                    placeat minima et. Ducimus aspernatur, quia?
-                </p>*/}
+                <div className="year__divider" />
                 <div className="year__meta">
                     <Sticky>
                         <div className="year__meta-inner">
-                            <h1 className="year__title">{this.props.data.year}</h1>
+                            <h2 className="year__title">{this.props.data.year}</h2>
                             <p>
                                 <span className="year__meta-value">{monthlyCount}</span> topups per
                                 month
@@ -43,7 +39,6 @@ class Year extends React.Component {
                     <MonthlyBars data={this.props.data} />
                     <PPLGraph data={this.props.data} />
                 </div>
-                <div className="year__divider"></div>
             </div>
         );
     }
