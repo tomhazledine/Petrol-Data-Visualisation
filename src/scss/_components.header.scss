@@ -1,6 +1,26 @@
 .header {
     padding: 2em;
     display: flex;
+    position: relative;
+}
+
+.header__home {
+    position: absolute;
+    top: 0;
+    right: 0;
+    a {
+        display: inline-block;
+        padding: 2em;
+    }
+    .home__icon {
+        width: 2em;
+        height: 2em;
+        fill: $black;
+        transition: fill 0.2s;
+    }
+    a:hover .home__icon {
+        fill: $primary;
+    }
 }
 
 .header__content {

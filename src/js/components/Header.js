@@ -2,6 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import bmw120i from '../../icons/bmw_120i.svg';
+import home from '../../icons/home.svg';
 import { totalSpend } from '../tools/dataWranglers';
 import { parseCurrency } from '../tools/dataHelpers';
 
@@ -26,6 +27,14 @@ class Header extends React.Component {
         const total = totalSpend(this.props.data);
         return (
             <div className="header">
+                <div className="header__home">
+                    <a href="https://tomhazledine.com">
+                        <svg className="home__icon">
+                            <use xlinkHref={`#${home.id}`} />
+                        </svg>
+                        <span className="visuallyhidden">Home</span>
+                    </a>
+                </div>
                 <div className="header__content">
                     <h1 className="header__title">I spend way too much on petrol...</h1>
                     <ReactMarkdown source={text} />

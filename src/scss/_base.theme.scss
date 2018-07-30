@@ -5,10 +5,10 @@ body {
 
 a {
     text-decoration: none;
-    color: $red;
+    color: $black;
     transition: color 0.2s;
     &:hover {
-        color: $black;
+        color: $primary;
     }
 }
 
